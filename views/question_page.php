@@ -43,31 +43,31 @@
   chmod("img/avatars/secpic.png",0666);
 ?>
 <div class="main-head">
-	<h2 class="hn"><span><?php echo $lang_pun_antibot['Stop bots question']; ?></span></h2>
+  <h2 class="hn"><span><?php echo $lang_pun_antibot['Stop bots question']; ?></span></h2>
 </div>
 <div class="main-subhead">
-	<h2 class="hn"><span><?php echo $forum_page['question']; ?> </span></h2>
+  <h2 class="hn"><span><?php echo $forum_page['question']; ?> </span></h2>
 </div>
 <div class="main-content main-frm">
         
-	<form id="afocus" class="frm-form" method="post" accept-charset="utf-8" action="<?php echo $forum_page['form_handler']; ?>">
-		<div class="hidden">
-		<?php foreach ($forum_page['hidden_fields'] as $hidden_key => $hidden_value): ?>
-			<input name="<?php echo forum_htmlencode($hidden_key); ?>" value="<?php echo forum_htmlencode($hidden_value); ?>" type="hidden">
-		<?php endforeach; ?>
-                        <input name="antibot_code" value="<?php echo $code;?>" type="hidden"/>
-		</div>
-<img alt='image' src='<?php echo "img/avatars/secpic.png";?>'/><br /><?php echo "Msg:" . $msg;?>
+  <form id="afocus" class="frm-form" method="post" accept-charset="utf-8" action="<?php echo $forum_page['form_handler']; ?>">
+    <div class="hidden">
+    <?php foreach ($forum_page['hidden_fields'] as $hidden_key => $hidden_value): ?>
+      <input name="<?php echo forum_htmlencode($hidden_key); ?>" value="<?php echo forum_htmlencode($hidden_value); ?>" type="hidden">
+    <?php endforeach; ?>
+      <input name="antibot_code" value="<?php echo $code;?>" type="hidden"/>
+    </div>
+    <div class="sf-set set1"><img alt='image' src='<?php echo "img/avatars/secpic.png";?>'/></div>
                                                 
-                                                <?php echo $lang_pun_antibot['capitals'];?>
-		<div class="sf-set set1">
-			<div class="sf-box text required">
-				<label for="fld1"><span><?php echo $lang_pun_antibot['Your answer']; ?></span></label><br/>
-				<span class="fld-input"><input type="text" value="" maxlength="255" size="35" name="pun_antibot_answer" id="fld1" required /></span>
-			</div>
-		</div>
-		<div class="frm-buttons">
-			<span class="submit primary"><input name="pun_antibot_submit" value="<?php echo $lang_pun_antibot['Answer']; ?>" type="submit"></span>
-		</div>
-	</form>
+    <?php echo $lang_pun_antibot['capitals'];?>
+    <div class="sf-set set1">
+      <div class="sf-box text required">
+        <label for="fld1"><span><?php echo $lang_pun_antibot['Your answer']; ?></span></label><br/>
+        <span class="fld-input"><input type="text" value="" maxlength="255" size="35" name="pun_antibot_answer" id="fld1" required /></span>
+      </div>
+    </div>
+    <div class="frm-buttons">
+      <span class="submit primary"><input name="pun_antibot_submit" value="<?php echo $lang_pun_antibot['Answer']; ?>" type="submit"></span>
+    </div>
+  </form>
 </div>
