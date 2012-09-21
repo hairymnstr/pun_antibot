@@ -1,9 +1,10 @@
 <?php
 
 /**
- * pun_stop_bots view of question page
+ * pun_antibot view of question page
+ *      based on pun_stop_bots extension
  *
- * @copyright (C) 2008-2011 PunBB
+ * @copyright (C) 2008-2011 PunBB, Nathan Dumont 2012
  * @license http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
  * @package pun_stop_bots
  */
