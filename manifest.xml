@@ -3,78 +3,30 @@
 
 <!--
 /**
- * Pun stop bots
+ * Pun Antibot based on
+ *      Pun stop bots
  *
+ * copyright Nathan Dumnont 2012, based on Pun stop bots which is:
  * @copyright (C) 2008-2011 PunBB
  * @license http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
- * @package pun_stop_bots
+ * @package pun_antibot
  */
 -->
 
 <extension engine="1.0">
-	<id>pun_stop_bots</id>
+	<id>pun_antibot</id>
 	<title>Stop spam from bots</title>
 	<version>0.3.3</version>
-	<description>The extension will ask some questions to prevent bot registration and posting.</description>
-	<author>PunBB Development Team</author>
+	<description>The extension will show a random image based captcha to stop spammers.</description>
+	<author>Nathan Dumont</author>
 
 	<minversion>1.4RC1</minversion>
 	<maxtestedon>1.4</maxtestedon>
 
-	<install><![CDATA[
-		// Table with questions.
-		if (!$forum_db->table_exists('pun_stop_bots_questions'))
-		{
-			$schema = array(
-				'FIELDS'	=> array(
-					'id' => array(
-						'datatype'		=> 'SERIAL',
-						'allow_null'	=> false
-					),
-					'question' => array(
-						'datatype'		=> 'TEXT',
-						'allow_null'	=> false
-					),
-					'answers' => array(
-						'datatype'		=> 'TEXT',
-						'allow_null'	=> false
-					)
-				),
-				'PRIMARY KEY'	=> array('id'),
-			);
-
-			$forum_db->create_table('pun_stop_bots_questions', $schema);
-
-			$insert_query = array(
-				'INSERT'	=>	'question, answers',
-				'INTO'		=>	'pun_stop_bots_questions',
-				'VALUES'	=>	'\''.$forum_db->escape('Say "Hello"').'\', \''.$forum_db->escape('hello,hi').'\''
-			);
-			$forum_db->query_build($insert_query) or error(__FILE__, __LINE__);
-
-			$insert_query = array(
-				'INSERT'	=>	'question, answers',
-				'INTO'		=>	'pun_stop_bots_questions',
-				'VALUES'	=>	'\''.$forum_db->escape('What is the name of our planet?').'\', \''.$forum_db->escape('earth').'\''
-			);
-			$forum_db->query_build($insert_query) or error(__FILE__, __LINE__);
-		}
-
-		// The column for storing the id of a given question.
-		$forum_db->add_field('users', 'pun_stop_bots_question_id', 'INT(10) UNSIGNED', true);
-		$forum_db->add_field('online', 'pun_stop_bots_question_id', 'INT(10) UNSIGNED', true);
-	]]></install>
+	<install></install>
 
 
-	<uninstall><![CDATA[
-		if (file_exists(FORUM_CACHE_DIR.'cache_pun_stop_bots.php'))
-			unlink(FORUM_CACHE_DIR.'cache_pun_stop_bots.php');
-
-		$forum_db->drop_field('users', 'pun_stop_bots_question_id');
-		$forum_db->drop_field('online', 'pun_stop_bots_question_id');
-
-		$forum_db->drop_table('pun_stop_bots_questions');
-	]]></uninstall>
+	<uninstall></uninstall>
 
 
 	<hooks>
@@ -170,7 +122,7 @@
 		]]></hook>
 
 
-		<hook id="po_form_submitted"><![CDATA[
+<!--		<hook id="po_form_submitted"><![CDATA[
 			if (!$forum_page['is_admmod'] && !isset($_POST['preview']))
 			{
 				include $ext_info['path'].'/functions.php';
@@ -397,6 +349,6 @@
 
 				$forum_page['admin_submenu']['pun_stop_bots_questions'] = '<li class="'.((FORUM_PAGE == 'admin-pun_stop_bots_questions') ? 'active' : 'normal').((empty($forum_page['admin_submenu'])) ? ' first-item' : '').'"><a href="'.forum_link($forum_url['pun_stop_bots_section']).'">'.$lang_pun_stop_bots['Management tab'].'</a></li>';
 			}
-		]]></hook>
+		]]></hook>-->
 	</hooks>
 </extension>
