@@ -22,7 +22,7 @@
                                                   $code='';
                                                   $im = imagecreatetruecolor(180, 40);
                                                   $chr = imagecreatetruecolor(32,32);
-                                                  $chars=imagecreatefrompng("font.png");
+                                                  $chars=imagecreatefrompng($ext_info['path'] . "/font.png");
 
                                                   // Create some colors
                                                   $white = imagecolorallocate($im, 255, 255, 255);
