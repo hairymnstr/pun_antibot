@@ -11,6 +11,16 @@
 
 ?>
 <?php
+  // remove any old images that are lying around
+  if($handle = opendir('img/avatars/')) {
+    while(false !== ($entry = readdir($handle))) {
+      if((substr($entry, 0, 6) == "secpic") && (filectime('img/avatars/' . $entry) < (time() - 10 * 60))) {
+        unlink('img/avatars/' . $entry);
+      }
+    }
+    closedir($handle);
+  }
+          
   // Create the image
   $code='';
   $im = imagecreatetruecolor(180, 40);
@@ -23,12 +33,17 @@
   imagefilledrectangle($im, 0, 0, 180, 40, $white);
 
   $oldspacing=10;
+  $text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
+  $imgname = 'secpic';
+  for($i=0;$i<12;$i++) {
+    $num = rand(0,34);
+    $imgname = $imgname . $text[$num];
+  }
   for($i=0;$i<6;$i++)
   {
     $num=rand(0,34);
     $row=($num-fmod($num,8))/8;
     $col=fmod($num,8);
-    $text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
     $size=rand(24,32);
     $spacing=rand(23,25);
     $ypos=rand(0,8);
@@ -40,8 +55,8 @@
     $oldspacing=$oldspacing+$spacing;
   }
   $code=crypt($code);
-  imagepng($im, "img/avatars/secpic.png");
-  chmod("img/avatars/secpic.png",0666);
+  imagepng($im, "img/avatars/" . $imgname);
+  chmod("img/avatars/" . $imgname, 0666);
 ?>
 <div class="main-head">
   <h2 class="hn"><span><?php echo $lang_pun_antibot['Stop bots question']; ?></span></h2>
@@ -58,7 +73,7 @@
     <?php endforeach; ?>
       <input name="antibot_code" value="<?php echo $code;?>" type="hidden"/>
     </div>
-    <div class="sf-set set1"><img alt='image' src='<?php echo "img/avatars/secpic.png";?>'/></div>
+    <div class="sf-set set1"><img alt='image' src='<?php echo "img/avatars/" . $imgname;?>'/></div>
                                                 
     <?php echo $lang_pun_antibot['capitals'];?>
     <div class="sf-set set1">
