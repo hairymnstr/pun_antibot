@@ -39,6 +39,7 @@
     $num = rand(0,34);
     $imgname = $imgname . $text[$num];
   }
+  $imgname = $imgname . '.png';
   for($i=0;$i<6;$i++)
   {
     $num=rand(0,34);
