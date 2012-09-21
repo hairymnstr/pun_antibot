@@ -15,8 +15,8 @@
 
 <extension engine="1.0">
 	<id>pun_antibot</id>
-	<title>Stop spam from bots</title>
-	<version>0.3.3</version>
+	<title>Antibot Captcha Plugin</title>
+	<version>3.0.0</version>
 	<description>The extension will show a random image based captcha to stop spammers.</description>
 	<author>Nathan Dumont</author>
 
@@ -39,14 +39,14 @@
 			if (empty($errors))
 			{
 				include $ext_info['path'].'/functions.php';
-				if (file_exists(FORUM_CACHE_DIR.'cache_pun_stop_bots.php'))
-					include FORUM_CACHE_DIR.'cache_pun_stop_bots.php';
+				#if (file_exists(FORUM_CACHE_DIR.'cache_pun_stop_bots.php'))
+				#	include FORUM_CACHE_DIR.'cache_pun_stop_bots.php';
 
-				if (!defined('PUN_STOP_BOTS_CACHE_LOADED') || $pun_stop_bots_questions['cached'] < (time() - 43200))
-				{
-					pun_stop_bots_generate_cache();
-					require FORUM_CACHE_DIR.'cache_pun_stop_bots.php';
-				}
+				#if (!defined('PUN_STOP_BOTS_CACHE_LOADED') || $pun_stop_bots_questions['cached'] < (time() - 43200))
+				#{
+				#	pun_stop_bots_generate_cache();
+				#	require FORUM_CACHE_DIR.'cache_pun_stop_bots.php';
+				#}
 
 				if (file_exists($ext_info['path'].'/lang/'.$forum_user['language'].'/'.$ext_info['id'].'.php'))
 					include $ext_info['path'].'/lang/'.$forum_user['language'].'/'.$ext_info['id'].'.php';
@@ -56,44 +56,44 @@
 				$pun_stop_bots_true_answer = FALSE;
 				if (isset($_POST['pun_stop_bots_submit']))
 				{
-					$query = array(
-						'SELECT'	=>	'pun_stop_bots_question_id',
-						'FROM'		=>	'online',
-						'WHERE'		=>	'ident = \''.$forum_user['ident'].'\''
-					);
-					$result = $forum_db->query_build($query) or error(__FILE__, __LINE__);
-					$row = $forum_db->fetch_assoc($result);
+					#$query = array(
+					#	'SELECT'	=>	'pun_stop_bots_question_id',
+					#	'FROM'		=>	'online',
+					#	'WHERE'		=>	'ident = \''.$forum_user['ident'].'\''
+					#);
+					#$result = $forum_db->query_build($query) or error(__FILE__, __LINE__);
+					#$row = $forum_db->fetch_assoc($result);
 
-					if ($row)
-						$question_id = $row['pun_stop_bots_question_id'];
-					else
-						message($lang_common['Bad request']);
+					#if ($row)
+					#	$question_id = $row['pun_stop_bots_question_id'];
+					#else
+					#	message($lang_common['Bad request']);
 
-					$answer = isset($_POST['pun_stop_bots_answer']) ? forum_trim(strtolower($_POST['pun_stop_bots_answer'])) : null;
-					if (!empty($answer))
-						$pun_stop_bots_true_answer = pun_stop_bots_compare_answers($answer, $question_id);
-					else
-						$pun_stop_bots_true_answer = FALSE;
+					#$answer = isset($_POST['pun_stop_bots_answer']) ? forum_trim(strtolower($_POST['pun_stop_bots_answer'])) : null;
+					#if (!empty($answer))
+					#	$pun_stop_bots_true_answer = pun_stop_bots_compare_answers($answer, $question_id);
+					#else
+					#	$pun_stop_bots_true_answer = FALSE;
 
-					if (!$pun_stop_bots_true_answer)
-					{
-						$new_question_id = pun_stop_bots_generate_guest_question_id();
-					}
-					else
-					{
-						$query = array(
-							'UPDATE'	=>	'online',
-							'SET'		=>	'pun_stop_bots_question_id = NULL',
-							'WHERE'		=>	'ident = \''.$forum_user['ident'].'\''
-						);
-						$forum_db->query_build($query) or error(__FILE__, __LINE__);
-					}
+					#if (!$pun_stop_bots_true_answer)
+					#{
+					#	$new_question_id = pun_stop_bots_generate_guest_question_id();
+					#}
+					#else
+					#{
+					#	$query = array(
+					#		'UPDATE'	=>	'online',
+					#		'SET'		=>	'pun_stop_bots_question_id = NULL',
+					#		'WHERE'		=>	'ident = \''.$forum_user['ident'].'\''
+					#	);
+					#	$forum_db->query_build($query) or error(__FILE__, __LINE__);
+					#}
 				}
 
 				if (!$pun_stop_bots_true_answer)
 				{
-					if (!isset($new_question_id))
-						$new_question_id = pun_stop_bots_generate_guest_question_id();
+					#if (!isset($new_question_id))
+					#	$new_question_id = pun_stop_bots_generate_guest_question_id();
 
 					$forum_page['crumbs'] = array(
 						array($forum_config['o_board_title'], forum_link($forum_url['index'])),
