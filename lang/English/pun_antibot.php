@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Pun stop bots extension language file
+ * Pun Antibot based on stop bots extension language file
  *
+ * Copyright Nathan Dumont 2012
  * @copyright (C) 2008-2009 PunBB
  * @license http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
  * @package pun_stop_bots
@@ -10,7 +11,7 @@
 
 if (!defined('FORUM')) die();
 
-$lang_pun_stop_bots = array(
+$lang_pun_antibot = array(
 	'Management err no question'			=>	'There is no question with such id.',
 	'Management err dupe question'			=>	'The entered question already exists.',
 	'Management err empty fields'			=>	'You must enter both text to question and text to answers.',
