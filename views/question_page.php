@@ -62,7 +62,7 @@
 		<div class="sf-set set1">
 			<div class="sf-box text required">
 				<label for="fld1"><span><?php echo $lang_pun_antibot['Your answer']; ?></span></label><br/>
-				<span class="fld-input"><input type="text" value="" maxlength="255" size="35" name="pun_stop_bots_answer" id="fld1" required /></span>
+				<span class="fld-input"><input type="text" value="" maxlength="255" size="35" name="pun_antibot_answer" id="fld1" required /></span>
 			</div>
 		</div>
 		<div class="frm-buttons">
