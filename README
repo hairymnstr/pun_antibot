@@ -1,0 +1,10 @@
+Pun Antibot
+
+Version: 3.0.0
+Author: nathan@nathandumont.com
+License: GPL v2 or later
+Copyright: Nathan Dumont 2012
+
+This is a really simple image based captcha plugin for PunBB 1.4.x
+
+It is based on my really old Antibot plugin for PunBB 1.2.x from over 6 years ago.  It doesn't use any cookies or database tables.  This should work fine with the latest PunBB just git clone directly to your server or copy the pun_antibot folder into the extensions folder then install from the admin panel. 

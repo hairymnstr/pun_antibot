@@ -33,22 +33,12 @@
 		<hook id="rg_register_end_validation" priority="9"><![CDATA[
 			if (empty($errors))
 			{
-				#include $ext_info['path'].'/functions.php';
-				#if (file_exists(FORUM_CACHE_DIR.'cache_pun_stop_bots.php'))
-				#	include FORUM_CACHE_DIR.'cache_pun_stop_bots.php';
-
-				#if (!defined('PUN_STOP_BOTS_CACHE_LOADED') || $pun_stop_bots_questions['cached'] < (time() - 43200))
-				#{
-				#	pun_stop_bots_generate_cache();
-				#	require FORUM_CACHE_DIR.'cache_pun_stop_bots.php';
-				#}
 
 				if (file_exists($ext_info['path'].'/lang/'.$forum_user['language'].'/'.$ext_info['id'].'.php'))
 					include $ext_info['path'].'/lang/'.$forum_user['language'].'/'.$ext_info['id'].'.php';
 				else
 					include $ext_info['path'].'/lang/English/'.$ext_info['id'].'.php';
 
-$msg = $ext_info['path'].'/lang/English/'.$ext_info['id'].'.php';
 				$pun_stop_bots_true_answer = FALSE;
 				if (isset($_POST['pun_antibot_submit']))
 				{
