@@ -53,21 +53,10 @@
 				else
 					include $ext_info['path'].'/lang/English/'.$ext_info['id'].'.php';
 
+$msg = $ext_info['path'].'/lang/English/'.$ext_info['id'].'.php';
 				$pun_stop_bots_true_answer = FALSE;
 				if (isset($_POST['pun_antibot_submit']))
 				{
-					#$query = array(
-					#	'SELECT'	=>	'pun_stop_bots_question_id',
-					#	'FROM'		=>	'online',
-					#	'WHERE'		=>	'ident = \''.$forum_user['ident'].'\''
-					#);
-					#$result = $forum_db->query_build($query) or error(__FILE__, __LINE__);
-					#$row = $forum_db->fetch_assoc($result);
-
-					#if ($row)
-					#	$question_id = $row['pun_stop_bots_question_id'];
-					#else
-					#	message($lang_common['Bad request']);
 
 					$answer = isset($_POST['pun_antibot_answer']) ? forum_trim(strtoupper($_POST['pun_antibot_answer'])) : null;
 					if (!empty($answer))
@@ -75,20 +64,6 @@
 					else
 						$pun_stop_bots_true_answer = FALSE;
 
-$msg = $answer;
-					#if (!$pun_stop_bots_true_answer)
-					#{
-					#	$new_question_id = pun_stop_bots_generate_guest_question_id();
-					#}
-					#else
-					#{
-					#	$query = array(
-					#		'UPDATE'	=>	'online',
-					#		'SET'		=>	'pun_stop_bots_question_id = NULL',
-					#		'WHERE'		=>	'ident = \''.$forum_user['ident'].'\''
-					#	);
-					#	$forum_db->query_build($query) or error(__FILE__, __LINE__);
-					#}
 				}
 
 				if (!$pun_stop_bots_true_answer)
