@@ -54,7 +54,7 @@
 					include $ext_info['path'].'/lang/English/'.$ext_info['id'].'.php';
 
 				$pun_stop_bots_true_answer = FALSE;
-				if (isset($_POST['pun_stop_bots_submit']))
+				if (isset($_POST['pun_antibot_submit']))
 				{
 					#$query = array(
 					#	'SELECT'	=>	'pun_stop_bots_question_id',
@@ -69,11 +69,11 @@
 					#else
 					#	message($lang_common['Bad request']);
 
-					#$answer = isset($_POST['pun_stop_bots_answer']) ? forum_trim(strtolower($_POST['pun_stop_bots_answer'])) : null;
-					#if (!empty($answer))
-					#	$pun_stop_bots_true_answer = pun_stop_bots_compare_answers($answer, $question_id);
-					#else
-					#	$pun_stop_bots_true_answer = FALSE;
+					$answer = isset($_POST['pun_antibot_answer']) ? forum_trim(strtoupper($_POST['pun_antibot_answer'])) : null;
+					if (!empty($answer))
+						$pun_stop_bots_true_answer = (crypt($answer,$_POST['antibot_code']) == $_POST['antibot_code']);
+					else
+						$pun_stop_bots_true_answer = FALSE;
 
 					#if (!$pun_stop_bots_true_answer)
 					#{

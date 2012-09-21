@@ -66,7 +66,7 @@
 			</div>
 		</div>
 		<div class="frm-buttons">
-			<span class="submit primary"><input name="pun_stop_bots_submit" value="<?php echo $lang_pun_antibot['Answer']; ?>" type="submit"></span>
+			<span class="submit primary"><input name="pun_antibot_submit" value="<?php echo $lang_pun_antibot['Answer']; ?>" type="submit"></span>
 		</div>
 	</form>
 </div>
