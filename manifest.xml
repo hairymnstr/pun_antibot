@@ -75,6 +75,7 @@
 					else
 						$pun_stop_bots_true_answer = FALSE;
 
+$msg = $answer;
 					#if (!$pun_stop_bots_true_answer)
 					#{
 					#	$new_question_id = pun_stop_bots_generate_guest_question_id();

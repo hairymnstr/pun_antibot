@@ -49,7 +49,7 @@
 	<h2 class="hn"><span><?php echo $forum_page['question']; ?> </span></h2>
 </div>
 <div class="main-content main-frm">
-        <img alt='image' src='<?php echo "img/avatars/secpic.png";?>'/><br />
+        <img alt='image' src='<?php echo "img/avatars/secpic.png";?>'/><br /><?php echo $msg;?>
                                                 
                                                 <?php echo $lang_antibot['capitals'];?></label>
 	<form id="afocus" class="frm-form" method="post" accept-charset="utf-8" action="<?php echo $forum_page['form_handler']; ?>">
